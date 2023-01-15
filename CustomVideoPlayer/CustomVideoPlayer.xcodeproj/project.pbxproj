@@ -13,6 +13,7 @@
 		3AA1420F296EFCCB00B4D443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1420D296EFCCB00B4D443 /* Main.storyboard */; };
 		3AA14211296EFCCD00B4D443 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AA14210296EFCCD00B4D443 /* Assets.xcassets */; };
 		3AA14214296EFCCD00B4D443 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA14212296EFCCD00B4D443 /* LaunchScreen.storyboard */; };
+		3AA1421C2973E0EC00B4D443 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1421B2973E0EC00B4D443 /* VideoPlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3AA14210296EFCCD00B4D443 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AA14213296EFCCD00B4D443 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AA14215296EFCCD00B4D443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AA1421B2973E0EC00B4D443 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				3AA14207296EFCCB00B4D443 /* AppDelegate.swift */,
 				3AA14209296EFCCB00B4D443 /* SceneDelegate.swift */,
 				3AA1420B296EFCCB00B4D443 /* ViewController.swift */,
+				3AA1421B2973E0EC00B4D443 /* VideoPlayerView.swift */,
 				3AA1420D296EFCCB00B4D443 /* Main.storyboard */,
 				3AA14210296EFCCD00B4D443 /* Assets.xcassets */,
 				3AA14212296EFCCD00B4D443 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				3AA1420C296EFCCB00B4D443 /* ViewController.swift in Sources */,
 				3AA14208296EFCCB00B4D443 /* AppDelegate.swift in Sources */,
 				3AA1420A296EFCCB00B4D443 /* SceneDelegate.swift in Sources */,
+				3AA1421C2973E0EC00B4D443 /* VideoPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
