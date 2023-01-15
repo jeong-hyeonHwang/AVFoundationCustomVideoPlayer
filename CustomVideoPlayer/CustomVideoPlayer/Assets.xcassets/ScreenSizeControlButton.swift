@@ -7,8 +7,25 @@
 
 import UIKit
 
+enum ScreenSizeStatus {
+    case normal
+    case full
+    
+    mutating func changeButtonImage() -> UIImage {
+        switch self {
+        case .normal:
+            self = .full
+            return UIImage(systemName: "arrow.down.right.and.arrow.up.left")!
+        case .full:
+            self = .normal
+            return UIImage(systemName: "arrow.up.left.and.arrow.down.right")!
+        }
+    }
+}
+
 final class ScreenSizeControlButton: UIButton {
 
+    var testScreenSizeStatus: ScreenSizeStatus = .normal
     override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         
@@ -24,6 +41,6 @@ final class ScreenSizeControlButton: UIButton {
     }
     
     @objc private func pressScreenSizeControlButton() {
-        print("HERE")
+        self.setImage(testScreenSizeStatus.changeButtonImage(), for: .normal)
     }
 }
