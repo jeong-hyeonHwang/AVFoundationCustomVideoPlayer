@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController {
 
     private var videoPlayerView: VideoPlayerView = VideoPlayerView()
-    private var videoPlayerControlView: VideoPlayerControlView = VideoPlayerControlView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +34,6 @@ class ViewController: UIViewController {
             videoPlayerView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             videoPlayerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             videoPlayerView.heightAnchor.constraint(equalToConstant: videoPlayerViewHeight)
-        ])
-        
-        view.addSubview(videoPlayerControlView)
-        videoPlayerControlView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            videoPlayerControlView.leadingAnchor.constraint(equalTo: videoPlayerView.leadingAnchor),
-            videoPlayerControlView.trailingAnchor.constraint(equalTo: videoPlayerView.trailingAnchor),
-            videoPlayerControlView.bottomAnchor.constraint(equalTo: videoPlayerView.bottomAnchor),
-            videoPlayerControlView.heightAnchor.constraint(equalToConstant: screenWidth / 12)
         ])
     }
 }
