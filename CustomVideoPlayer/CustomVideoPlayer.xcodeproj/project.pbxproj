@@ -15,6 +15,7 @@
 		3AA14214296EFCCD00B4D443 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA14212296EFCCD00B4D443 /* LaunchScreen.storyboard */; };
 		3AA1421C2973E0EC00B4D443 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1421B2973E0EC00B4D443 /* VideoPlayerView.swift */; };
 		3AA1421E2973E42500B4D443 /* ScreenSizeControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1421D2973E42500B4D443 /* ScreenSizeControlButton.swift */; };
+		3AA142202973E8A500B4D443 /* PlayStatusControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1421F2973E8A500B4D443 /* PlayStatusControlButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3AA14215296EFCCD00B4D443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AA1421B2973E0EC00B4D443 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		3AA1421D2973E42500B4D443 /* ScreenSizeControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScreenSizeControlButton.swift; path = Assets.xcassets/ScreenSizeControlButton.swift; sourceTree = "<group>"; };
+		3AA1421F2973E8A500B4D443 /* PlayStatusControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayStatusControlButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				3AA1420B296EFCCB00B4D443 /* ViewController.swift */,
 				3AA1421B2973E0EC00B4D443 /* VideoPlayerView.swift */,
 				3AA1421D2973E42500B4D443 /* ScreenSizeControlButton.swift */,
+				3AA1421F2973E8A500B4D443 /* PlayStatusControlButton.swift */,
 				3AA1420D296EFCCB00B4D443 /* Main.storyboard */,
 				3AA14210296EFCCD00B4D443 /* Assets.xcassets */,
 				3AA14212296EFCCD00B4D443 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AA1421E2973E42500B4D443 /* ScreenSizeControlButton.swift in Sources */,
+				3AA142202973E8A500B4D443 /* PlayStatusControlButton.swift in Sources */,
 				3AA1420C296EFCCB00B4D443 /* ViewController.swift in Sources */,
 				3AA14208296EFCCB00B4D443 /* AppDelegate.swift in Sources */,
 				3AA1420A296EFCCB00B4D443 /* SceneDelegate.swift in Sources */,

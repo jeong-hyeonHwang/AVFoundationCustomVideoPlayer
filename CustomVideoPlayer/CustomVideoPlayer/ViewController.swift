@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 
     private var videoPlayerView: UIView = VideoPlayerView()
     private var screenSizeControlButton: ScreenSizeControlButton = ScreenSizeControlButton()
-    
+    private var playStatusControlButton: PlayStatusControlButton = PlayStatusControlButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,15 @@ class ViewController: UIViewController {
             screenSizeControlButton.heightAnchor.constraint(equalToConstant: buttonSize),
             screenSizeControlButton.trailingAnchor.constraint(equalTo: videoPlayerView.trailingAnchor),
             screenSizeControlButton.bottomAnchor.constraint(equalTo: videoPlayerView.bottomAnchor)
+        ])
+        
+        videoPlayerView.addSubview(playStatusControlButton)
+        playStatusControlButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            playStatusControlButton.widthAnchor.constraint(equalToConstant: buttonSize),
+            playStatusControlButton.heightAnchor.constraint(equalToConstant: buttonSize),
+            playStatusControlButton.leadingAnchor.constraint(equalTo: videoPlayerView.leadingAnchor),
+            playStatusControlButton.bottomAnchor.constraint(equalTo: videoPlayerView.bottomAnchor)
         ])
     }
 }
