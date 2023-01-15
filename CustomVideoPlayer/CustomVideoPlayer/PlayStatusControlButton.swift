@@ -23,7 +23,7 @@ enum PlayStatus {
     }
 }
 
-class PlayStatusControlButton: UIButton {
+final class PlayStatusControlButton: UIButton {
 
     var testPlayStatus: PlayStatus = .play
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScreenSizeControlButton: UIButton {
+final class ScreenSizeControlButton: UIButton {
 
     override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)

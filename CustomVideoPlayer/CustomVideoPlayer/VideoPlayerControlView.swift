@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VideoPlayerControlView: UIView {
+final class VideoPlayerControlView: UIView {
 
     private var screenSizeControlButton: ScreenSizeControlButton = ScreenSizeControlButton()
     private var playStatusControlButton: PlayStatusControlButton = PlayStatusControlButton()

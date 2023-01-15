@@ -26,9 +26,11 @@ enum ControlStatus {
         }
     }
 }
-class VideoPlayerView: UIView {
+
+final class VideoPlayerView: UIView {
     
     var testControlStatus: ControlStatus = .hidden
+    
     private var videoPlayerControlView: VideoPlayerControlView = VideoPlayerControlView()
     
     override init(frame: CGRect  =  CGRect()) {
@@ -42,7 +44,7 @@ class VideoPlayerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpLayout() {
+    private func setUpLayout() {
         
         // TEST
         self.backgroundColor = .yellow
@@ -61,12 +63,12 @@ class VideoPlayerView: UIView {
         videoPlayerControlView.isUserInteractionEnabled = true
     }
     
-    func componentConfigure() {
+    private func componentConfigure() {
         let touchGesture = UITapGestureRecognizer(target: self, action: #selector(touchVideoPlayerScreen))
         self.addGestureRecognizer(touchGesture)
     }
     
-    @objc func touchVideoPlayerScreen() {
+    @objc private func touchVideoPlayerScreen() {
         testControlStatus.changeControlStatus(view: videoPlayerControlView)
     }
                                             
