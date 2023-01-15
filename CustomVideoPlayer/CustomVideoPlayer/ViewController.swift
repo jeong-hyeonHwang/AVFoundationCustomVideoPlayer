@@ -9,20 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private var videoPlayerView: UIView = VideoPlayerView()
-    private var screenSizeControlButton: ScreenSizeControlButton = ScreenSizeControlButton()
-    private var playStatusControlButton: PlayStatusControlButton = PlayStatusControlButton()
+    private var videoPlayerView: VideoPlayerView = VideoPlayerView()
+    private var videoPlayerControlView: VideoPlayerControlView = VideoPlayerControlView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // TEST
-        view.backgroundColor = .white
         
         setUpLayout()
     }
 
     func setUpLayout() {
+        
+        // TEST
+        view.backgroundColor = .white
         
         let safeArea = view.safeAreaLayoutGuide
         let screenWidth = UIScreen.main.bounds.width
@@ -38,23 +37,13 @@ class ViewController: UIViewController {
             videoPlayerView.heightAnchor.constraint(equalToConstant: videoPlayerViewHeight)
         ])
         
-        let buttonSize = screenWidth / 12
-        videoPlayerView.addSubview(screenSizeControlButton)
-        screenSizeControlButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(videoPlayerControlView)
+        videoPlayerControlView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            screenSizeControlButton.widthAnchor.constraint(equalToConstant: buttonSize),
-            screenSizeControlButton.heightAnchor.constraint(equalToConstant: buttonSize),
-            screenSizeControlButton.trailingAnchor.constraint(equalTo: videoPlayerView.trailingAnchor),
-            screenSizeControlButton.bottomAnchor.constraint(equalTo: videoPlayerView.bottomAnchor)
-        ])
-        
-        videoPlayerView.addSubview(playStatusControlButton)
-        playStatusControlButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            playStatusControlButton.widthAnchor.constraint(equalToConstant: buttonSize),
-            playStatusControlButton.heightAnchor.constraint(equalToConstant: buttonSize),
-            playStatusControlButton.leadingAnchor.constraint(equalTo: videoPlayerView.leadingAnchor),
-            playStatusControlButton.bottomAnchor.constraint(equalTo: videoPlayerView.bottomAnchor)
+            videoPlayerControlView.leadingAnchor.constraint(equalTo: videoPlayerView.leadingAnchor),
+            videoPlayerControlView.trailingAnchor.constraint(equalTo: videoPlayerView.trailingAnchor),
+            videoPlayerControlView.bottomAnchor.constraint(equalTo: videoPlayerView.bottomAnchor),
+            videoPlayerControlView.heightAnchor.constraint(equalToConstant: screenWidth / 12)
         ])
     }
 }
