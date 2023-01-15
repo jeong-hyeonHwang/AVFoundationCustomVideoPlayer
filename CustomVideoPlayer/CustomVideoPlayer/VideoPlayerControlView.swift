@@ -9,7 +9,7 @@ import UIKit
 
 final class VideoPlayerControlView: UIView {
 
-    private var screenSizeControlButton: ScreenSizeControlButton = ScreenSizeControlButton()
+    var screenSizeControlButton: ScreenSizeControlButton = ScreenSizeControlButton()
     private var playStatusControlButton: PlayStatusControlButton = PlayStatusControlButton()
     
     override init(frame: CGRect  =  CGRect()) {
@@ -44,6 +44,18 @@ final class VideoPlayerControlView: UIView {
             playStatusControlButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             playStatusControlButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
-
+        
+        
+        // TEST
+        let testView = UIView()
+        testView.backgroundColor = .cyan
+        addSubview(testView)
+        testView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            testView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            testView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            testView.widthAnchor.constraint(equalToConstant: 50),
+            testView.heightAnchor.constraint(equalToConstant: 10),
+        ])
     }
 }

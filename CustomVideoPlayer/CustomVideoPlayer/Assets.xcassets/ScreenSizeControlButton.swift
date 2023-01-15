@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ScreenSizeControlButtonDelegate: AnyObject {
+    func changeScreenSize(screenSizeStatus: ScreenSizeStatus)
+}
+
 enum ScreenSizeStatus {
     case normal
     case full
@@ -24,8 +28,11 @@ enum ScreenSizeStatus {
 }
 
 final class ScreenSizeControlButton: UIButton {
-
+    
     var testScreenSizeStatus: ScreenSizeStatus = .normal
+    
+    weak var delegate: ScreenSizeControlButtonDelegate?
+    
     override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         
@@ -42,5 +49,6 @@ final class ScreenSizeControlButton: UIButton {
     
     @objc private func pressScreenSizeControlButton() {
         self.setImage(testScreenSizeStatus.changeButtonImage(), for: .normal)
+        self.delegate?.changeScreenSize(screenSizeStatus: testScreenSizeStatus)
     }
 }
