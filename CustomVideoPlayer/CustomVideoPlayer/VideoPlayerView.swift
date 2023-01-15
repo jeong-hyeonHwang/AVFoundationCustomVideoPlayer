@@ -12,6 +12,7 @@ class VideoPlayerView: UIView {
     override init(frame: CGRect  =  CGRect()) {
         super.init(frame: frame)
         
+        // TEST
         self.backgroundColor = .yellow
     }
     
