@@ -61,19 +61,6 @@ final class VideoPlayerView: UIView {
         
         videoPlayerControlView.alpha = 0.0
         videoPlayerControlView.isUserInteractionEnabled = true
-        
-        // TEST
-        let testView = UIView()
-        testView.backgroundColor = .cyan
-        addSubview(testView)
-        testView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            testView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            testView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            testView.widthAnchor.constraint(equalToConstant: 50),
-            testView.heightAnchor.constraint(equalToConstant: 10),
-        ])
-
     }
     
     private func componentConfigure() {
