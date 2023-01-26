@@ -11,14 +11,16 @@ import UIKit
 class ViewController: UIViewController {
     
     private var videoPlayerView: VideoPlayerView = VideoPlayerView()
+    private var infoView: UIView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpLayout()
         delegateConfigure()
+        notificationConfigure()
     }
-
+    
     func setUpLayout() {
         
         // TEST
@@ -28,6 +30,27 @@ class ViewController: UIViewController {
         let screenWidth = UIScreen.main.bounds.width
         
         let videoPlayerViewHeight = screenWidth * 9/16
+        
+        
+        let bottomView: UIView = UIView()
+        view.addSubview(bottomView)
+        bottomView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bottomView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            bottomView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            bottomView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            bottomView.heightAnchor.constraint(equalToConstant: videoPlayerViewHeight)
+        ])
+        
+        infoView.backgroundColor = .yellow
+        view.addSubview(infoView)
+        infoView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            infoView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            infoView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            infoView.topAnchor.constraint(equalTo: bottomView.bottomAnchor),
+            infoView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
         
         view.addSubview(videoPlayerView)
         videoPlayerView.translatesAutoresizingMaskIntoConstraints = false
@@ -67,12 +90,12 @@ class ViewController: UIViewController {
             videoPlayerView.replay()
         }
     }
+    
 }
 
 extension ViewController: ScreenSizeControlButtonDelegate
 {
     func changeScreenSize(screenSizeStatus: ScreenSizeStatus) {
-        let screen = UIScreen.main.bounds
         switch screenSizeStatus {
         case .normal:
             self.videoPlayerView.layer.anchorPoint = CGPointMake(0.5, 0.5)
