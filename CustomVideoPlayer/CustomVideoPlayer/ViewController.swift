@@ -113,3 +113,14 @@ extension ViewController: ScreenSizeControlButtonDelegate
         }
     }
 }
+
+extension ViewController: PlayStatusControlButtonDelegate {
+    func changePlayStatus(playStatus: PlayStatus) {
+        switch playStatus {
+        case .play:
+            videoPlayerView.replay()
+        case .pause:
+            videoPlayerView.pause()
+        }
+    }
+}
