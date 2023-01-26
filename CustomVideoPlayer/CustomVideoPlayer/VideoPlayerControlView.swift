@@ -23,8 +23,7 @@ final class VideoPlayerControlView: UIView {
     
     private func setUpLayout() {
         
-        // TEST
-        self.backgroundColor = .gray
+        self.backgroundColor = .gray.withAlphaComponent(0.4)
         
         let buttonSize = UIScreen.main.bounds.width / 12
         addSubview(screenSizeControlButton)

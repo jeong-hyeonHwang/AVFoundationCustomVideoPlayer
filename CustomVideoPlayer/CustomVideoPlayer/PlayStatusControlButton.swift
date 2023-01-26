@@ -15,26 +15,30 @@ enum PlayStatus {
         switch self {
         case .play:
             self = .pause
-            return UIImage(systemName: "pause.fill")!
+            return UIImage(systemName: "play.fill")!
         case .pause:
             self = .play
-            return UIImage(systemName: "play.fill")!
+            return UIImage(systemName: "pause.fill")!
         }
     }
+}
+
+protocol PlayStatusControlButtonDelegate: AnyObject {
+    func changePlayStatus(playStatus: PlayStatus)
 }
 
 final class PlayStatusControlButton: UIButton {
 
     var testPlayStatus: PlayStatus = .play
     
+    weak var delegate: PlayStatusControlButtonDelegate?
+    
     override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         
-        self.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        self.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         self.addTarget(self, action: #selector(pressPlayStatusControlButton), for: .touchUpInside)
         
-        // TEST
-        self.backgroundColor = .blue
     }
     
     required init?(coder: NSCoder) {
@@ -42,8 +46,11 @@ final class PlayStatusControlButton: UIButton {
     }
     
     @objc private func pressPlayStatusControlButton() {
-        self.setImage(testPlayStatus.changeButtonImage(), for: .normal)
-        
+        self.changeButtonImage()
+        self.delegate?.changePlayStatus(playStatus: testPlayStatus)
     }
-
+    
+    func changeButtonImage() {
+        self.setImage(testPlayStatus.changeButtonImage(), for: .normal)
+    }
 }

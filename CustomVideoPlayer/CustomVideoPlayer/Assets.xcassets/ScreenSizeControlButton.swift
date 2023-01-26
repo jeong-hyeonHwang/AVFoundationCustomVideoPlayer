@@ -39,8 +39,6 @@ final class ScreenSizeControlButton: UIButton {
         self.setImage(UIImage(systemName: "arrow.up.left.and.arrow.down.right"), for: .normal)
         self.addTarget(self, action: #selector(pressScreenSizeControlButton), for: .touchUpInside)
         
-        // TEST
-        self.backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {
