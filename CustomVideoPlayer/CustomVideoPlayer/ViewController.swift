@@ -103,12 +103,14 @@ extension ViewController: ScreenSizeControlButtonDelegate
                 videoPlayerView.transform = CGAffineTransformTranslate(videoPlayerView.transform, 0, 0)
                 videoPlayerView.transform = CGAffineTransform(rotationAngle: 0.0)
                 videoPlayerView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0)
+                infoView.alpha = 1.0
             })
         case .full:
             UIView.animate(withDuration: 0.3, delay: TimeInterval(0.0), animations: { [self] in
                 self.videoPlayerView.layer.anchorPoint = CGPointMake(0.1, 0.5)
                 videoPlayerView.transform = CGAffineTransform(rotationAngle: .pi/2.0)
                 videoPlayerView.transform = CGAffineTransformScale(videoPlayerView.transform, 16.0/9.0, 16.0/9.0)
+                infoView.alpha = 0.0
             })
         }
     }
