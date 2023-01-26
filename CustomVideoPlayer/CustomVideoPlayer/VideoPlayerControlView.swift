@@ -10,7 +10,7 @@ import UIKit
 final class VideoPlayerControlView: UIView {
 
     var screenSizeControlButton: ScreenSizeControlButton = ScreenSizeControlButton()
-    private var playStatusControlButton: PlayStatusControlButton = PlayStatusControlButton()
+    var playStatusControlButton: PlayStatusControlButton = PlayStatusControlButton()
     
     override init(frame: CGRect  =  CGRect()) {
         super.init(frame: frame)
