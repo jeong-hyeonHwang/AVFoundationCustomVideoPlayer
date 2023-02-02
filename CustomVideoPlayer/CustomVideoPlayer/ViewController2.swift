@@ -13,35 +13,6 @@ class ViewController2: UIViewController {
     private var videoPlayerControlView: VideoPlayerControlView = VideoPlayerControlView()
     private var infoView: UIView = UIView()
     
-    private var xValue: CGFloat = CGFloat()
-    private var yValue: CGFloat = -5.0
-    
-    private lazy var xValueIncreaseButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("X++", for: .normal)
-        return button
-    }()
-    
-    private lazy var yValueIncreaseButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Y++", for: .normal)
-        return button
-    }()
-    
-    private lazy var xValueDecreaseButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("X--", for: .normal)
-        return button
-    }()
-    
-    private lazy var yValueDecreaseButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Y--", for: .normal)
-        return button
-    }()
-    
-    private var valueIs: CGFloat = 0.001
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,45 +20,7 @@ class ViewController2: UIViewController {
         componentConfigure()
         delegateConfigure()
         notificationConfigure()
-        
-        
-        // TEST CODE
-        [xValueIncreaseButton, yValueIncreaseButton, xValueDecreaseButton, yValueDecreaseButton].forEach({
-            view.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.backgroundColor = .white
-            $0.setTitleColor(.black, for: .normal)
-        })
-        
-        NSLayoutConstraint.activate([
-            xValueIncreaseButton.widthAnchor.constraint(equalToConstant: 100),
-            xValueIncreaseButton.heightAnchor.constraint(equalToConstant: 100),
-            xValueIncreaseButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            xValueIncreaseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-            yValueIncreaseButton.widthAnchor.constraint(equalToConstant: 100),
-            yValueIncreaseButton.heightAnchor.constraint(equalToConstant: 100),
-            yValueIncreaseButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            yValueIncreaseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-            xValueDecreaseButton.widthAnchor.constraint(equalToConstant: 100),
-            xValueDecreaseButton.heightAnchor.constraint(equalToConstant: 100),
-            xValueDecreaseButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            xValueDecreaseButton.topAnchor.constraint(equalTo: xValueIncreaseButton.bottomAnchor, constant: 50),
-            
-            yValueDecreaseButton.widthAnchor.constraint(equalToConstant: 100),
-            yValueDecreaseButton.heightAnchor.constraint(equalToConstant: 100),
-            yValueDecreaseButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            yValueDecreaseButton.topAnchor.constraint(equalTo: yValueIncreaseButton.bottomAnchor, constant: 50),
-        ])
-        
-        xValueIncreaseButton.addTarget(self, action: #selector(increaseXValue), for: .touchUpInside)
-        yValueIncreaseButton.addTarget(self, action: #selector(increaseYValue), for: .touchUpInside)
-        xValueDecreaseButton.addTarget(self, action: #selector(decreaseXValue), for: .touchUpInside)
-        yValueDecreaseButton.addTarget(self, action: #selector(decreaseYValue), for: .touchUpInside)
-        // TEST CODE END
-        
-        view.backgroundColor = .white
+
     }
     
     func setUpLayout() {
@@ -143,10 +76,6 @@ class ViewController2: UIViewController {
         videoPlayerControlView.alpha = 0.0
         videoPlayerControlView.isUserInteractionEnabled = true
         
-        // TEST
-        xValue = videoPlayerControlView.layer.anchorPoint.x
-        
-        print("Initial Point is \(xValue) : \(yValue)")
     }
     
     private func componentConfigure() {
@@ -185,30 +114,6 @@ class ViewController2: UIViewController {
     
     @objc private func touchVideoPlayerScreen() {
         videoPlayerView.testControlStatus.changeControlStatus(view: videoPlayerControlView)
-    }
-    
-    @objc private func increaseXValue() {
-        xValue += valueIs
-        self.videoPlayerControlView.layer.anchorPoint = CGPointMake(xValue, yValue)
-        print("Current Point is \(xValue) : \(yValue)")
-    }
-    
-    @objc private func increaseYValue() {
-        yValue += valueIs
-        self.videoPlayerControlView.layer.anchorPoint = CGPointMake(xValue, yValue)
-        print("Current Point is \(xValue) : \(yValue)")
-    }
-    
-    @objc private func decreaseXValue() {
-        xValue -= valueIs
-        self.videoPlayerControlView.layer.anchorPoint = CGPointMake(xValue, yValue)
-        print("Current Point is \(xValue) : \(yValue)")
-    }
-    
-    @objc private func decreaseYValue() {
-        yValue -= valueIs
-        self.videoPlayerControlView.layer.anchorPoint = CGPointMake(xValue, 0.5)
-        print("Current Point is \(xValue) : \(yValue)")
     }
 }
 
