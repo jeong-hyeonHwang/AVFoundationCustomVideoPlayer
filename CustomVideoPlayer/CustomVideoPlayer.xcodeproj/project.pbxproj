@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0603FD298BDA1200C8ACB5 /* OnlyVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0603FC298BDA1200C8ACB5 /* OnlyVideoPlayerView.swift */; };
+		3A0603FF298BDA2300C8ACB5 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0603FE298BDA2300C8ACB5 /* ViewController2.swift */; };
 		3AA14208296EFCCB00B4D443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA14207296EFCCB00B4D443 /* AppDelegate.swift */; };
 		3AA1420A296EFCCB00B4D443 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA14209296EFCCB00B4D443 /* SceneDelegate.swift */; };
 		3AA1420C296EFCCB00B4D443 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1420B296EFCCB00B4D443 /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A0603FC298BDA1200C8ACB5 /* OnlyVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyVideoPlayerView.swift; sourceTree = "<group>"; };
+		3A0603FE298BDA2300C8ACB5 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		3AA14204296EFCCB00B4D443 /* CustomVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA14207296EFCCB00B4D443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AA14209296EFCCB00B4D443 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +71,9 @@
 				3AA14207296EFCCB00B4D443 /* AppDelegate.swift */,
 				3AA14209296EFCCB00B4D443 /* SceneDelegate.swift */,
 				3AA1420B296EFCCB00B4D443 /* ViewController.swift */,
+				3A0603FE298BDA2300C8ACB5 /* ViewController2.swift */,
 				3AA1421B2973E0EC00B4D443 /* VideoPlayerView.swift */,
+				3A0603FC298BDA1200C8ACB5 /* OnlyVideoPlayerView.swift */,
 				3AA142212973EB1800B4D443 /* VideoPlayerControlView.swift */,
 				3AA1421D2973E42500B4D443 /* ScreenSizeControlButton.swift */,
 				3AA1421F2973E8A500B4D443 /* PlayStatusControlButton.swift */,
@@ -152,9 +158,11 @@
 			files = (
 				3AA142222973EB1800B4D443 /* VideoPlayerControlView.swift in Sources */,
 				3AA1421E2973E42500B4D443 /* ScreenSizeControlButton.swift in Sources */,
+				3A0603FF298BDA2300C8ACB5 /* ViewController2.swift in Sources */,
 				3AA142202973E8A500B4D443 /* PlayStatusControlButton.swift in Sources */,
 				3AA1420C296EFCCB00B4D443 /* ViewController.swift in Sources */,
 				3AA14208296EFCCB00B4D443 /* AppDelegate.swift in Sources */,
+				3A0603FD298BDA1200C8ACB5 /* OnlyVideoPlayerView.swift in Sources */,
 				3AA1420A296EFCCB00B4D443 /* SceneDelegate.swift in Sources */,
 				3AA1421C2973E0EC00B4D443 /* VideoPlayerView.swift in Sources */,
 			);

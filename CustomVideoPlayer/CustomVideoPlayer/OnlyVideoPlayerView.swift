@@ -1,38 +1,16 @@
 //
-//  VideoPlayerView.swift
+//  OnlyVideoPlayerView.swift
 //  CustomVideoPlayer
 //
-//  Created by 황정현 on 2023/01/15.
+//  Created by 황정현 on 2023/02/02.
 //
 
 import UIKit
 import AVFoundation
 
-enum ControlStatus {
-    case exist
-    case hidden
-    
-    mutating func changeControlStatus(view: UIView) {
-        switch self {
-        case .exist:
-            UIView.animate(withDuration: 0.2, delay: TimeInterval(0.0), animations: {
-                view.alpha = 0.0
-            })
-            self = .hidden
-        case .hidden:
-            UIView.animate(withDuration: 0.2, delay: TimeInterval(0.0), animations: {
-                view.alpha = 1.0
-            })
-            self = .exist
-        }
-    }
-}
+class OnlyVideoPlayerView: UIView {
 
-final class VideoPlayerView: UIView {
-    
     var testControlStatus: ControlStatus = .hidden
-    
-    var videoPlayerControlView: VideoPlayerControlView = VideoPlayerControlView()
     
     private let videoURL = ""
     
@@ -57,7 +35,6 @@ final class VideoPlayerView: UIView {
         super.init(frame: frame)
 
         setUpLayout()
-        componentConfigure()
         playVideo()
     }
     
@@ -75,27 +52,8 @@ final class VideoPlayerView: UIView {
     }
     
     private func setUpLayout() {
-        
         // TEST
         self.backgroundColor = .black
-        
-        let controlViewHeight = UIScreen.main.bounds.width / 12
-        addSubview(videoPlayerControlView)
-        videoPlayerControlView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            videoPlayerControlView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            videoPlayerControlView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            videoPlayerControlView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            videoPlayerControlView.heightAnchor.constraint(equalToConstant: controlViewHeight)
-        ])
-        
-        videoPlayerControlView.alpha = 0.0
-        videoPlayerControlView.isUserInteractionEnabled = true
-    }
-    
-    private func componentConfigure() {
-        let touchGesture = UITapGestureRecognizer(target: self, action: #selector(touchVideoPlayerScreen))
-        self.addGestureRecognizer(touchGesture)
     }
     
     private func setUpAsset(with url: URL, completion: ((_ asset: AVAsset) -> Void)?) {
@@ -168,10 +126,5 @@ final class VideoPlayerView: UIView {
     func replay() {
         playerLayer.player?.play()
     }
-    
-    @objc private func touchVideoPlayerScreen() {
-        testControlStatus.changeControlStatus(view: videoPlayerControlView)
-    }
-    
-    
+
 }
