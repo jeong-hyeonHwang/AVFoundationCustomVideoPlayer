@@ -133,6 +133,9 @@ extension ViewController2: ScreenSizeControlButtonDelegate
                 videoPlayerControlView.transform = CGAffineTransform(rotationAngle: 0.0)
                 videoPlayerControlView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0)
                 
+                [videoPlayerControlView.playStatusControlButton, videoPlayerControlView.screenSizeControlButton].forEach({
+                    $0.transform = CGAffineTransformScale($0.transform, 16.0/9.0, 1.0)
+                })
                 infoView.alpha = 1.0
             })
         case .full:
@@ -149,10 +152,14 @@ extension ViewController2: ScreenSizeControlButtonDelegate
                 
                 // NON PHYSICAL BUTTON
                 self.videoPlayerControlView.layer.anchorPoint = CGPointMake(0.235, -5.0)
+                
                 // PHYSICAL BUTTON
                 //self.videoPlayerControlView.layer.anchorPoint = CGPointMake(0.3225, -5.0)
                 videoPlayerControlView.transform = CGAffineTransform(rotationAngle: .pi/2.0)
                 videoPlayerControlView.transform = CGAffineTransformScale(videoPlayerControlView.transform, 16.0/9.0, 1.0)
+                [videoPlayerControlView.playStatusControlButton, videoPlayerControlView.screenSizeControlButton].forEach({
+                    $0.transform = CGAffineTransformScale($0.transform, 9.0/16.0, 1.0)
+                })
                 
                 infoView.alpha = 0.0
             })
