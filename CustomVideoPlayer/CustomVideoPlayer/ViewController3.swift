@@ -13,12 +13,22 @@ class ViewController3: UIViewController {
     private var infoView: UIView = UIView()
     
     private var videoPlayerHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpLayout()
         delegateConfigure()
         notificationConfigure()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        switch videoPlayerView.videoPlayerControlView.screenSizeControlButton.testScreenSizeStatus {
+        case .full:
+            return true
+        case .normal:
+            return false
+        }
     }
     
     func setUpLayout() {
