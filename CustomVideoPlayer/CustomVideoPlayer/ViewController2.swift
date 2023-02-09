@@ -22,6 +22,14 @@ class ViewController2: UIViewController {
         notificationConfigure()
 
     }
+    override var prefersStatusBarHidden: Bool {
+        switch videoPlayerControlView.screenSizeControlButton.testScreenSizeStatus {
+        case .full:
+            return true
+        case .normal:
+            return false
+        }
+    }
     
     func setUpLayout() {
         
@@ -168,6 +176,7 @@ extension ViewController2: ScreenSizeControlButtonDelegate
                 infoView.alpha = 0.0
             })
         }
+        self.setNeedsStatusBarAppearanceUpdate()
     }
 }
 
