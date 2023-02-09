@@ -32,6 +32,7 @@ final class VideoPlayerView: UIView {
     
     var testControlStatus: ControlStatus = .hidden
     
+    var activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
     var videoPlayerControlView: VideoPlayerControlView = VideoPlayerControlView()
     
     private let videoURL = ""
@@ -91,6 +92,17 @@ final class VideoPlayerView: UIView {
         
         videoPlayerControlView.alpha = 0.0
         videoPlayerControlView.isUserInteractionEnabled = true
+        
+        addSubview(activityIndicatorView)
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            activityIndicatorView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            activityIndicatorView.topAnchor.constraint(equalTo: self.topAnchor),
+            activityIndicatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+        activityIndicatorView.style = .large
+        activityIndicatorStatus(true)
     }
     
     private func componentConfigure() {
@@ -139,6 +151,7 @@ final class VideoPlayerView: UIView {
             switch status {
             case .readyToPlay:
                 print(".readyToPlay")
+                activityIndicatorStatus(false)
                 player?.play()
             case .failed:
                 print(".failed")
@@ -169,6 +182,18 @@ final class VideoPlayerView: UIView {
         playerLayer.player?.play()
     }
     
+    func activityIndicatorStatus(_ isActive: Bool) {
+        if isActive == true {
+            activityIndicatorView.startAnimating()
+            activityIndicatorView.isHidden = false
+            self.isUserInteractionEnabled = false
+        } else {
+            activityIndicatorView.stopAnimating()
+            activityIndicatorView.isHidden = true
+            self.isUserInteractionEnabled = true
+        }
+        
+    }
     @objc private func touchVideoPlayerScreen() {
         testControlStatus.changeControlStatus(view: videoPlayerControlView)
     }
