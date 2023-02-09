@@ -31,6 +31,15 @@ class ViewController3: UIViewController {
         }
     }
     
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        switch videoPlayerView.videoPlayerControlView.screenSizeControlButton.testScreenSizeStatus {
+        case .full:
+            return true
+        case .normal:
+            return false
+        }
+    }
+   
     func setUpLayout() {
         
         // TEST
