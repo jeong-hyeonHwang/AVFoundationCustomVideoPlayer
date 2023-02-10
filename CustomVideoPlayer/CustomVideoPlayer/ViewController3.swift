@@ -12,14 +12,21 @@ class ViewController3: UIViewController {
     private var videoPlayerView: VideoPlayerView = VideoPlayerView()
     private var infoView: UIView = UIView()
     
+    private var liveMarkLeadingConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    private var liveMarkBottomConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    private var videoPlayerWidthConstraint: NSLayoutConstraint = NSLayoutConstraint()
     private var videoPlayerHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
+    private var liveMarkView: LiveMarkView = LiveMarkView()
+    
+    private var screenWidth: CGFloat = CGFloat()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpLayout()
         delegateConfigure()
         notificationConfigure()
+
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -46,8 +53,7 @@ class ViewController3: UIViewController {
         view.backgroundColor = .black
         
         let safeArea = view.safeAreaLayoutGuide
-        let screenWidth = UIScreen.main.bounds.width
-        
+        screenWidth = UIScreen.main.bounds.width
         let videoPlayerViewHeight = screenWidth * 9/16
         
         
@@ -72,15 +78,31 @@ class ViewController3: UIViewController {
             infoView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
         
+        videoPlayerWidthConstraint = videoPlayerView.widthAnchor.constraint(equalToConstant: screenWidth)
         videoPlayerHeightConstraint = videoPlayerView.heightAnchor.constraint(equalToConstant: videoPlayerViewHeight)
+        
         view.addSubview(videoPlayerView)
         videoPlayerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            videoPlayerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            videoPlayerView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            videoPlayerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             videoPlayerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            videoPlayerWidthConstraint,
             videoPlayerHeightConstraint
         ])
+        
+        
+        liveMarkLeadingConstraint = liveMarkView.leadingAnchor.constraint(equalTo: videoPlayerView.leadingAnchor, constant: 8)
+        liveMarkBottomConstraint = liveMarkView.bottomAnchor.constraint(equalTo: videoPlayerView.bottomAnchor, constant: -8)
+        view.addSubview(liveMarkView)
+        liveMarkView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            liveMarkLeadingConstraint,
+            liveMarkBottomConstraint,
+            liveMarkView.widthAnchor.constraint(equalToConstant: screenWidth / 8),
+            liveMarkView.heightAnchor.constraint(equalToConstant: screenWidth / 18)
+        ])
+        
+        liveMarkView.setUpLiveLabelRadius(to: screenWidth / 36)
     }
     
     func delegateConfigure() {
@@ -125,8 +147,15 @@ extension ViewController3: ScreenSizeControlButtonDelegate
             }
             self.setNeedsUpdateOfSupportedInterfaceOrientations()
             
-            let videoPlayerViewHeight = UIScreen.main.bounds.height * 9 / 16
+            let videoPlayerViewHeight = screenWidth * 9 / 16
+            
+            videoPlayerWidthConstraint.constant = screenWidth
             videoPlayerHeightConstraint.constant = videoPlayerViewHeight
+            
+            videoPlayerView.videoPlayerControlView.screenSizeControlButtonTrailingConstraint.constant = -4
+            videoPlayerView.videoPlayerControlView.screenSizeControlButtonBottomConstraint.constant = -4
+            liveMarkLeadingConstraint.constant = 8
+            liveMarkBottomConstraint.constant = -8
             infoViewAlphaValue = 1.0
         case .full:
             if let delegate = UIApplication.shared.delegate as? AppDelegate {
@@ -135,7 +164,14 @@ extension ViewController3: ScreenSizeControlButtonDelegate
             self.setNeedsUpdateOfSupportedInterfaceOrientations()
             
             let videoPlayerViewHeight = UIScreen.main.bounds.width
+            let videoPlayerViewWidth = videoPlayerViewHeight * 16 / 9
+            
+            videoPlayerWidthConstraint.constant = videoPlayerViewWidth
             videoPlayerHeightConstraint.constant = videoPlayerViewHeight
+            liveMarkLeadingConstraint.constant = 16
+            liveMarkBottomConstraint.constant = -16
+            videoPlayerView.videoPlayerControlView.screenSizeControlButtonTrailingConstraint.constant = -16
+            videoPlayerView.videoPlayerControlView.screenSizeControlButtonBottomConstraint.constant = -16
             infoViewAlphaValue = 0.0
         }
         UIView.animate(withDuration: 0.3, delay: TimeInterval(0.0), animations: { [self] in

@@ -20,6 +20,7 @@
 		3AA1421E2973E42500B4D443 /* ScreenSizeControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1421D2973E42500B4D443 /* ScreenSizeControlButton.swift */; };
 		3AA142202973E8A500B4D443 /* PlayStatusControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1421F2973E8A500B4D443 /* PlayStatusControlButton.swift */; };
 		3AA142222973EB1800B4D443 /* VideoPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA142212973EB1800B4D443 /* VideoPlayerControlView.swift */; };
+		3AE6FCCF2995FF0700ACB8BA /* LiveMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6FCCE2995FF0700ACB8BA /* LiveMarkView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		3AA1421D2973E42500B4D443 /* ScreenSizeControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScreenSizeControlButton.swift; path = Assets.xcassets/ScreenSizeControlButton.swift; sourceTree = "<group>"; };
 		3AA1421F2973E8A500B4D443 /* PlayStatusControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayStatusControlButton.swift; sourceTree = "<group>"; };
 		3AA142212973EB1800B4D443 /* VideoPlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerControlView.swift; sourceTree = "<group>"; };
+		3AE6FCCE2995FF0700ACB8BA /* LiveMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMarkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +78,9 @@
 				3A0603FE298BDA2300C8ACB5 /* ViewController2.swift */,
 				3A060400298BF9BF00C8ACB5 /* ViewController3.swift */,
 				3AA1421B2973E0EC00B4D443 /* VideoPlayerView.swift */,
-				3A0603FC298BDA1200C8ACB5 /* OnlyVideoPlayerView.swift */,
 				3AA142212973EB1800B4D443 /* VideoPlayerControlView.swift */,
+				3AE6FCCE2995FF0700ACB8BA /* LiveMarkView.swift */,
+				3A0603FC298BDA1200C8ACB5 /* OnlyVideoPlayerView.swift */,
 				3AA1421D2973E42500B4D443 /* ScreenSizeControlButton.swift */,
 				3AA1421F2973E8A500B4D443 /* PlayStatusControlButton.swift */,
 				3AA1420D296EFCCB00B4D443 /* Main.storyboard */,
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A060401298BF9BF00C8ACB5 /* ViewController3.swift in Sources */,
+				3AE6FCCF2995FF0700ACB8BA /* LiveMarkView.swift in Sources */,
 				3AA142222973EB1800B4D443 /* VideoPlayerControlView.swift in Sources */,
 				3AA1421E2973E42500B4D443 /* ScreenSizeControlButton.swift in Sources */,
 				3A0603FF298BDA2300C8ACB5 /* ViewController2.swift in Sources */,

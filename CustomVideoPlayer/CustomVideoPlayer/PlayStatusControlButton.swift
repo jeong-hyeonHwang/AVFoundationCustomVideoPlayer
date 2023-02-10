@@ -15,10 +15,16 @@ enum PlayStatus {
         switch self {
         case .play:
             self = .pause
-            return UIImage(systemName: "play.fill")!
+            let config = UIImage.SymbolConfiguration(pointSize: 45, weight: .regular, scale: .medium)
+            let image = UIImage(systemName: "play.fill", withConfiguration: config)?
+                .withTintColor(.white, renderingMode: .alwaysOriginal)
+            return image!
         case .pause:
             self = .play
-            return UIImage(systemName: "pause.fill")!
+            let config = UIImage.SymbolConfiguration(pointSize: 45, weight: .regular, scale: .medium)
+            let image = UIImage(systemName: "pause.fill", withConfiguration: config)?
+                .withTintColor(.white, renderingMode: .alwaysOriginal)
+            return image!
         }
     }
 }
@@ -36,7 +42,9 @@ final class PlayStatusControlButton: UIButton {
     override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         
-        self.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: 45, weight: .regular, scale: .medium)
+        let image = UIImage(systemName: "pause.fill", withConfiguration: config)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        self.setImage(image, for: .normal)
         self.addTarget(self, action: #selector(pressPlayStatusControlButton), for: .touchUpInside)
         
     }

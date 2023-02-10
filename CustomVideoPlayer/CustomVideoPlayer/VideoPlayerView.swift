@@ -68,7 +68,6 @@ final class VideoPlayerView: UIView {
     
     deinit {
         playerItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
-        print("deinit of PlayerView")
     }
     
     override class var layerClass: AnyClass {
@@ -80,14 +79,13 @@ final class VideoPlayerView: UIView {
         // TEST
         self.backgroundColor = .black
         
-        let controlViewHeight = UIScreen.main.bounds.width / 12
         addSubview(videoPlayerControlView)
         videoPlayerControlView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             videoPlayerControlView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             videoPlayerControlView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            videoPlayerControlView.topAnchor.constraint(equalTo: self.topAnchor),
             videoPlayerControlView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            videoPlayerControlView.heightAnchor.constraint(equalToConstant: controlViewHeight)
         ])
         
         videoPlayerControlView.alpha = 0.0
@@ -102,12 +100,16 @@ final class VideoPlayerView: UIView {
             activityIndicatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
         activityIndicatorView.style = .large
+        activityIndicatorView.color = .white
         activityIndicatorStatus(true)
     }
     
     private func componentConfigure() {
         let touchGesture = UITapGestureRecognizer(target: self, action: #selector(touchVideoPlayerScreen))
         self.addGestureRecognizer(touchGesture)
+        
+        self.player?.rate = 30
+        playerLayer.player?.currentItem?.automaticallyPreservesTimeOffsetFromLive = true
     }
     
     private func setUpAsset(with url: URL, completion: ((_ asset: AVAsset) -> Void)?) {

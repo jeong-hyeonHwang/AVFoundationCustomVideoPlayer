@@ -19,10 +19,12 @@ enum ScreenSizeStatus {
         switch self {
         case .normal:
             self = .full
-            return UIImage(systemName: "arrow.down.right.and.arrow.up.left")!
+            let image = UIImage(systemName: "arrow.down.right.and.arrow.up.left")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+            return image!
         case .full:
             self = .normal
-            return UIImage(systemName: "arrow.up.left.and.arrow.down.right")!
+            let image = UIImage(systemName: "arrow.up.left.and.arrow.down.right")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+            return image!
         }
     }
 }
@@ -36,7 +38,8 @@ final class ScreenSizeControlButton: UIButton {
     override init(frame: CGRect = CGRect()) {
         super.init(frame: frame)
         
-        self.setImage(UIImage(systemName: "arrow.up.left.and.arrow.down.right"), for: .normal)
+        let image = UIImage(systemName: "arrow.up.left.and.arrow.down.right")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        self.setImage(image, for: .normal)
         self.addTarget(self, action: #selector(pressScreenSizeControlButton), for: .touchUpInside)
         
     }
