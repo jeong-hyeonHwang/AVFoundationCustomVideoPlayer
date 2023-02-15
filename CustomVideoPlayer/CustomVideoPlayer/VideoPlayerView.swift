@@ -41,6 +41,17 @@ final class VideoPlayerView: UIView {
     var videoPlayerControlView: VideoPlayerControlView = VideoPlayerControlView()
     
     private let videoURL = ""
+    private lazy var reloadButton: UIButton = {
+        let button = UIButton()
+        
+        let config = UIImage.SymbolConfiguration(pointSize: 45, weight: .regular, scale: .medium)
+        let image = UIImage(systemName: "arrow.clockwise", withConfiguration: config)?
+            .withTintColor(.white, renderingMode: .alwaysOriginal)
+        button.setImage(image, for: .normal)
+        return button
+    }()
+    
+    
     weak var delegate: VideoPlayerViewDelegate?
     
     var player: AVPlayer? {
@@ -98,6 +109,16 @@ final class VideoPlayerView: UIView {
         videoPlayerControlView.playStatusControlButton.isHidden = true
         videoPlayerControlView.isUserInteractionEnabled = true
         
+        addSubview(reloadButton)
+        reloadButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            reloadButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            reloadButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            reloadButton.widthAnchor.constraint(equalToConstant: 100),
+            reloadButton.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        changeReloadButtonActiveStatus(as: false)
+        
         addSubview(activityIndicatorView)
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -108,12 +129,14 @@ final class VideoPlayerView: UIView {
         ])
         activityIndicatorView.style = .large
         activityIndicatorView.color = .white
-        activityIndicatorStatus(true)
+        activityIndicatorStatus(isActive: true)
     }
     
     private func componentConfigure() {
         let touchGesture = UITapGestureRecognizer(target: self, action: #selector(touchVideoPlayerScreen))
         self.addGestureRecognizer(touchGesture)
+        
+        reloadButton.addTarget(self, action: #selector(pressedReloadButton), for: .touchUpInside)
         
         self.player?.rate = 30
         playerLayer.player?.currentItem?.automaticallyPreservesTimeOffsetFromLive = true
@@ -160,13 +183,17 @@ final class VideoPlayerView: UIView {
             switch status {
             case .readyToPlay:
                 print(".readyToPlay")
-                activityIndicatorStatus(false)
+                activityIndicatorStatus(isActive: false)
                 delegate?.videoIsReadyToPlay()
                 player?.play()
             case .failed:
+                activityIndicatorStatus(isActive: false)
+                changeReloadButtonActiveStatus(as: true)
                 print(".failed")
             case .unknown:
                 print(".unknown")
+                activityIndicatorStatus(isActive: false)
+                changeReloadButtonActiveStatus(as: true)
             @unknown default:
                 print("@unknown default")
             }
@@ -181,7 +208,7 @@ final class VideoPlayerView: UIView {
     
     func playVideo() {
         
-        activityIndicatorStatus(true)
+        activityIndicatorStatus(isActive: true)
         
         guard let url = URL(string: videoURL) else { return }
         self.play(with: url)
@@ -195,7 +222,7 @@ final class VideoPlayerView: UIView {
         playerLayer.player?.play()
     }
     
-    func activityIndicatorStatus(_ isActive: Bool) {
+    func activityIndicatorStatus(isActive: Bool) {
         if isActive == true {
             activityIndicatorView.startAnimating()
             activityIndicatorView.isHidden = false
@@ -207,8 +234,22 @@ final class VideoPlayerView: UIView {
         }
         
     }
+    
+    func changeReloadButtonActiveStatus(as active: Bool) {
+        if active {
+            reloadButton.isHidden = false
+        } else {
+            reloadButton.isHidden = true
+        }
+    }
+    
     @objc private func touchVideoPlayerScreen() {
         testControlStatus.changeControlStatus(view: videoPlayerControlView)
+    }
+    
+    @objc private func pressedReloadButton() {
+        self.playVideo()
+        changeReloadButtonActiveStatus(as: false)
     }
     
     
