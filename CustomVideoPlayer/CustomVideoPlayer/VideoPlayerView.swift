@@ -89,6 +89,7 @@ final class VideoPlayerView: UIView {
         ])
         
         videoPlayerControlView.alpha = 0.0
+        videoPlayerControlView.playStatusControlButton.isHidden = true
         videoPlayerControlView.isUserInteractionEnabled = true
         
         addSubview(activityIndicatorView)
