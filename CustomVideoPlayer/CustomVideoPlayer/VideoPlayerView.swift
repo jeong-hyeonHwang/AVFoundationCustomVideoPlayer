@@ -179,6 +179,9 @@ final class VideoPlayerView: UIView {
     }
     
     func playVideo() {
+        
+        activityIndicatorStatus(true)
+        
         guard let url = URL(string: videoURL) else { return }
         self.play(with: url)
     }
