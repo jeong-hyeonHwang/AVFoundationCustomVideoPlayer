@@ -8,6 +8,11 @@
 import UIKit
 import AVFoundation
 
+protocol VideoPlayerViewDelegate: AnyObject {
+    func videoIsReadyToPlay()
+}
+
+weak var delegate: ScreenSizeControlButtonDelegate?
 enum ControlStatus {
     case exist
     case hidden
@@ -155,6 +160,7 @@ final class VideoPlayerView: UIView {
             case .readyToPlay:
                 print(".readyToPlay")
                 activityIndicatorStatus(false)
+                delegate?.videoIsReadyToPlay()
                 player?.play()
             case .failed:
                 print(".failed")

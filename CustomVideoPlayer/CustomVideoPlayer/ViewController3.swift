@@ -106,9 +106,11 @@ class ViewController3: UIViewController {
         ])
         
         liveMarkView.setUpLiveLabelRadius(to: screenWidth / 36)
+        liveMarkView.liveMarkColorActive(to: false)
     }
     
     func delegateConfigure() {
+        videoPlayerView.delegate = self
         videoPlayerView.videoPlayerControlView.screenSizeControlButton.delegate = self
         videoPlayerView.videoPlayerControlView.playStatusControlButton.delegate = self
     }
@@ -122,6 +124,7 @@ class ViewController3: UIViewController {
     
     @objc private func toBackground() {
         firstAttempt = false
+        liveMarkView.liveMarkColorActive(to: false)
     }
     
     @objc private func toForeground() {
@@ -130,6 +133,12 @@ class ViewController3: UIViewController {
         }
     }
     
+}
+
+extension ViewController3: VideoPlayerViewDelegate {
+    func videoIsReadyToPlay() {
+        liveMarkView.liveMarkColorActive(to: true)
+    }
 }
 
 extension ViewController3: ScreenSizeControlButtonDelegate

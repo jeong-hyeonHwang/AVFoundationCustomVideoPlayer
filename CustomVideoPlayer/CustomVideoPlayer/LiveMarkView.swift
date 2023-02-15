@@ -14,7 +14,7 @@ final class LiveMarkView: UIView {
     override init(frame: CGRect  =  CGRect()) {
         super.init(frame: frame)
 
-        backgroundColor = UIColor(red: 255/255, green: 116/255, blue: 129/255, alpha: 1)
+        backgroundColor = UIColor.lightGray
         setUpLayout()
         componentConfigure()
     }
@@ -43,5 +43,20 @@ final class LiveMarkView: UIView {
 
     func setUpLiveLabelRadius(to: CGFloat) {
         self.layer.cornerRadius = to
+    }
+    
+    func liveMarkColorActive(to active: Bool) {
+        let currentColor = backgroundColor
+        var targetColor: UIColor? = currentColor
+        
+        if active {
+            targetColor = UIColor(red: 255/255, green: 116/255, blue: 129/255, alpha: 1)
+        } else {
+            targetColor = UIColor.lightGray
+        }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.backgroundColor = targetColor
+        })
     }
 }
