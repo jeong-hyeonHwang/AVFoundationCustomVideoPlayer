@@ -13,7 +13,7 @@ class ViewController3: UIViewController {
     private var infoView: UIView = UIView()
     
     private var liveMarkLeadingConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    private var liveMarkBottomConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    private var liveMarkTopConstraint: NSLayoutConstraint = NSLayoutConstraint()
     private var videoPlayerWidthConstraint: NSLayoutConstraint = NSLayoutConstraint()
     private var videoPlayerHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
@@ -92,12 +92,13 @@ class ViewController3: UIViewController {
         
         
         liveMarkLeadingConstraint = liveMarkView.leadingAnchor.constraint(equalTo: videoPlayerView.leadingAnchor, constant: 8)
-        liveMarkBottomConstraint = liveMarkView.bottomAnchor.constraint(equalTo: videoPlayerView.bottomAnchor, constant: -8)
+        liveMarkTopConstraint = liveMarkView.topAnchor.constraint(equalTo: videoPlayerView.topAnchor, constant: 8)
+        
         view.addSubview(liveMarkView)
         liveMarkView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             liveMarkLeadingConstraint,
-            liveMarkBottomConstraint,
+            liveMarkTopConstraint,
             liveMarkView.widthAnchor.constraint(equalToConstant: screenWidth / 8),
             liveMarkView.heightAnchor.constraint(equalToConstant: screenWidth / 18)
         ])
@@ -155,7 +156,7 @@ extension ViewController3: ScreenSizeControlButtonDelegate
             videoPlayerView.videoPlayerControlView.screenSizeControlButtonTrailingConstraint.constant = -4
             videoPlayerView.videoPlayerControlView.screenSizeControlButtonBottomConstraint.constant = -4
             liveMarkLeadingConstraint.constant = 8
-            liveMarkBottomConstraint.constant = -8
+            liveMarkTopConstraint.constant = 8
             infoViewAlphaValue = 1.0
         case .full:
             if let delegate = UIApplication.shared.delegate as? AppDelegate {
@@ -169,7 +170,7 @@ extension ViewController3: ScreenSizeControlButtonDelegate
             videoPlayerWidthConstraint.constant = videoPlayerViewWidth
             videoPlayerHeightConstraint.constant = videoPlayerViewHeight
             liveMarkLeadingConstraint.constant = 16
-            liveMarkBottomConstraint.constant = -16
+            liveMarkTopConstraint.constant = 16
             videoPlayerView.videoPlayerControlView.screenSizeControlButtonTrailingConstraint.constant = -16
             videoPlayerView.videoPlayerControlView.screenSizeControlButtonBottomConstraint.constant = -16
             infoViewAlphaValue = 0.0
