@@ -41,6 +41,7 @@ final class VideoPlayerView: UIView {
     var videoPlayerControlView: VideoPlayerControlView = VideoPlayerControlView()
     
     private let videoURL = ""
+    weak var delegate: VideoPlayerViewDelegate?
     
     var player: AVPlayer? {
         get {
