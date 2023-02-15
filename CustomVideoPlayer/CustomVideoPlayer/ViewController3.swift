@@ -20,6 +20,8 @@ class ViewController3: UIViewController {
     private var liveMarkView: LiveMarkView = LiveMarkView()
     
     private var screenWidth: CGFloat = CGFloat()
+    private var firstAttempt: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -114,24 +116,17 @@ class ViewController3: UIViewController {
     func notificationConfigure() {
         let notificationCenter = NotificationCenter.default
         
-        // CASE1: ToBackground 시 재생 버튼 이미지 전환
         notificationCenter.addObserver(self, selector: #selector(toBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
-        
-        // CASE2: ToForeground 시 다시 재생
         notificationCenter.addObserver(self, selector: #selector(toForeground),name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
-    // CASE1 objc func
     @objc private func toBackground() {
-        if videoPlayerView.videoPlayerControlView.playStatusControlButton.testPlayStatus == .play {
-            videoPlayerView.videoPlayerControlView.playStatusControlButton.changeButtonImage()
-        }
+        firstAttempt = false
     }
     
-    // CASE2 objc func
     @objc private func toForeground() {
-        if videoPlayerView.videoPlayerControlView.playStatusControlButton.testPlayStatus == .play {
-            videoPlayerView.replay()
+        if !firstAttempt {
+            videoPlayerView.playVideo()
         }
     }
     
